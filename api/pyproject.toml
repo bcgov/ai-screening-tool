@@ -1,0 +1,8 @@
+[project]
+name = "ai_screening_tool_api"
+version = "0.1.0"
+dependencies = ["fastapi[standard]", "sqlalchemy"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
