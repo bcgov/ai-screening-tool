@@ -2,7 +2,7 @@ import json
 import os
 
 import openai
-from prompts import RESUME_PARSER_SYSTEM_PROMPT, JOB_DESCRIPTION_SYSTEM_PROMPT, RESUME_COMPARISON_SYSTEM_PROMPT
+from .prompts import RESUME_PARSER_SYSTEM_PROMPT, JOB_DESCRIPTION_SYSTEM_PROMPT, RESUME_COMPARISON_SYSTEM_PROMPT
 
 MODEL = "gpt-4o-mini"
 openai.api_key = os.getenv('OPENAI_KEY')

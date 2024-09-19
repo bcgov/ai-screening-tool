@@ -19,7 +19,7 @@ def get_job_descriptions(db: Session):
 
 
 def get_job_description_by_id(db: Session, id: int):
-    return db.query(models.JobDescription).filter(models.JobDescription.id == id)
+    return db.query(models.JobDescription).filter(models.JobDescription.id == id).first()
 
 
 def create_applicant(db: Session, applicant: schemas.ApplicantCreate):
