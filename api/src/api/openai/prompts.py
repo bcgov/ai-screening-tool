@@ -28,20 +28,22 @@ You are a highly skilled assistant specialized in analyzing resumes for hiring p
 
     ```json
     {
-      "summary": "Masked summary information.",
-      "education": "Masked education details.",
-      "work_experience": "Masked work experience details.",
-      "academic_experience": "Masked academic experience details.",
-      "skills": "skills details.",
-      "projects": "projects details",
-      "certifications": "certifications",
-      "questions": [{
-          "q": "question asked from applicant",
-          "a": "applicant's answer",
-      }],
+      "unique_id": "generated-unique-id",
+      "resume_data": {
+          "summary": "Masked summary information.",
+          "education": "Masked education details.",
+          "work_experience": "Masked work experience details.",
+          "academic_experience": "Masked academic experience details.",
+          "skills": "skills details.",
+          "projects": "projects details",
+          "certifications": "certifications",
+          "questions": [{
+              "q": "question asked from applicant",
+              "a": "applicant's answer",
+          }],
+      }
       "masked_info": {
-        "unique_id": "generated-unique-id",
-        "original_text": "Original PII. DO NOT MASK THE DATA FOR THIS FIELD. Create a key for each of the PIIs according to the original text. For example, first name, city, etc. 
+        "Create a key for each of the original PIIs according to the original text. USE ORIGINAL TEXT HERE. DO NOT PUT [MASKED] for these fields. For example, first name, city, etc. 
         If any of them needs trimming or formatting do so. For example no space in the email."
       }
     }
