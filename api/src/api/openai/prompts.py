@@ -100,10 +100,11 @@ For each section, the parsed data should be outputted in a clean JSON format wit
         },
         "certifications": ["Certification 1"],
       },
-      "preferences": {
-        "education": ["Preferred qualifications."],
-        "experience" ["Preferred experience"],
-      },
+      "preferences": [
+        "preference_one",
+        "preference_two",
+        "preference_three",
+      ],
       "behavioral_competencies": [
         "Competency 1",
         "Competency 2"
@@ -122,19 +123,19 @@ You are an assistant for analyzing parsed resumes versus parsed job descriptions
     1- ** Check education_experience **: In `job_description`, find `education_experience` and iterate through it.
     Compare each item against the education and experience in the `resume`. If any of them match, return true. Be careful about years of experience. calculate the total years of experience needed. If none of them match, return false.
     Also, return a short description of why it is true or false. Mention the years of experience/education needed in the description and applicant's response.
-
+    
     2- ** Check related_experience **: In `job_description`, find `related_experience` key and iterate through it. It has two keys (`AND` and `OR`).
         2-1- ** Check AND items**: In `AND` items, all of them should match with the `resume`. If all of them exist and match, return `true`. Otherwise, return `false`.
         Also, return a short description of why it is true or false.
         2-2- ** Check OR items**: In `OR` items, at least one of them should be matched with the applicant's resume in `resume` fields. If at least one exists, return `true`; otherwise, return `false`.
         Also, return a short description of why it is true or false.
-
+    
     3- ** Check preferences **: Iterate through each of the `preferences` key in `job_description` and start matching with the applicant's resume. If the preference is mentioned in the applicant's resume return true, otherwise return false. You must return a value for each preference.
     Also, return a short description of why it is true or false.
-
+    
     4- ** Check behavioral_competencies **: Iterate through the `behavioral_competencies` key in `job_description` and start matching with the applicant's resume. If you find the skill, return true; otherwise, return false. You must return a value for each behavioural competency.
     Also, return a short description of why it is true or false.
-
+    
     5- ** Check skills **: Iterate through the `skills` key in `job_description` and start matching with the applicant's resume. If you find the skill, return true; otherwise, return false.
     Also, return a short description of why it is true or false.
 

@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from . import crud, models, schemas
 from .database import get_db, engine
 from .file_utils import extract_text_from_docx, extract_texts_from_resume_batch
+from .openai.utils import analyze_resume
 from .processing import process_job_description, process_resume
 
 from dotenv import load_dotenv
@@ -44,13 +45,13 @@ async def upload_resume_batch(
         )
     )
 
-    for unique_id, masked_info, resume_data in map(dict.values, processed_resumes):
+    for processed_resume in processed_resumes:
         crud.create_applicant(
             db,
             schemas.ApplicantCreate(
-                unique_id=unique_id,
-                masked_info=masked_info,
-                resume_data=resume_data,
+                unique_id=processed_resume["unique_id"],
+                masked_info=processed_resume["masked_info"],
+                resume_data=processed_resume["resume_data"],
             ),
         )
 
@@ -69,9 +70,16 @@ async def create_analysis(
     job_description = crud.get_job_description_by_id(db, job_description_id)
     applicant = crud.get_applicant_by_id(db, applicant_id)
 
-    # TODO: Compare job description against applicant
+    s = {
+        "unique_id": applicant.unique_id,
+        "masked_info": applicant.masked_info,
+        "resume_data": applicant.resume_data,
+}
+    print(job_description)
+    print(applicant.resume_data)
+    data = analyze_resume(job_description.data, s)
 
-    data = {"comparison": "between resume and job description"}
+    # data = {"comparison": "between resume and job description"}
 
     crud.create_analysis(
         db,
