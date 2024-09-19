@@ -3,7 +3,7 @@ name = "ai_screening_tool_api"
 version = "0.1.0"
 dependencies = [
     "fastapi[standard]",
-    "openapi",
+    "openai",
     "PyPDF2",
     "python-docx",
     "python-dotenv",
