@@ -1,7 +1,14 @@
 [project]
 name = "ai_screening_tool_api"
 version = "0.1.0"
-dependencies = ["fastapi[standard]", "sqlalchemy"]
+dependencies = [
+    "fastapi[standard]",
+    "openapi",
+    "PyPDF2",
+    "python-docx",
+    "python-dotenv",
+    "sqlalchemy",
+]
 
 [build-system]
 requires = ["setuptools"]
