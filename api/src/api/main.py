@@ -6,6 +6,10 @@ from sqlalchemy.orm import Session
 from . import crud, models, schemas
 from .database import get_db, engine
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="AI Screening Tool")
