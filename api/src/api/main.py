@@ -1,6 +1,6 @@
 """Web Adapter"""
 
-from fastapi import Depends, FastAPI, UploadFile
+from fastapi import Depends, FastAPI, Request, UploadFile
 from sqlalchemy.orm import Session
 
 from . import crud, models, schemas
@@ -15,6 +15,14 @@ load_dotenv()
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="AI Screening Tool")
+
+
+@app.middleware("http")
+async def cors(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+
+    return response
 
 
 @app.post("/job-descriptions/")
